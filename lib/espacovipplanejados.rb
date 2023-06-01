@@ -22,11 +22,11 @@ module Espacovipplanejados
       end
 
       def source_name
-        @lead.source.name
+        @lead.source.name || ''
       end
 
       def message
-        @lead.message.downcase || ''
+        @lead.message&.downcase || ''
       end
     end
   end
