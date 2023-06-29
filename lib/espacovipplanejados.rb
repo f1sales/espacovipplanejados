@@ -15,7 +15,7 @@ module Espacovipplanejados
 
         return "#{source_name} - São Caetano" if message['caetano']
         return "#{source_name} - Lapa" if message['lapa']
-        return "#{source_name} - Pinheiros" if message['pinheiros']
+        return "#{source_name} - Pinheiros" if message['pinheiros'] || product['pinheiros']
         return "#{source_name} - Santana" if message['santana']
 
         source_name
@@ -27,6 +27,10 @@ module Espacovipplanejados
 
       def message
         @lead.message&.downcase || ''
+      end
+
+      def product
+        @lead.product&.name&.downcase || ''
       end
     end
   end
