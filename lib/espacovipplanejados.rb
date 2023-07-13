@@ -13,10 +13,10 @@ module Espacovipplanejados
       def switch_source(lead)
         @lead = lead
 
-        return "#{source_name} - São Caetano" if message['caetano']
-        return "#{source_name} - Lapa" if message['lapa']
-        return "#{source_name} - Pinheiros" if message['pinheiros'] || product['pinheiros']
-        return "#{source_name} - Santana" if message['santana']
+        return "#{source_name} - São Caetano" if sao_caetano?
+        return "#{source_name} - Lapa" if lapa?
+        return "#{source_name} - Pinheiros" if pinheiros?
+        return "#{source_name} - Santana" if santana?
 
         source_name
       end
@@ -31,6 +31,22 @@ module Espacovipplanejados
 
       def product
         @lead.product&.name&.downcase || ''
+      end
+
+      def sao_caetano?
+        message['caetano'] || product['caetano']
+      end
+
+      def lapa?
+        message['lapa']
+      end
+
+      def pinheiros?
+        message['pinheiros'] || product['pinheiros']
+      end
+
+      def santana?
+        message['santana']
       end
     end
   end
