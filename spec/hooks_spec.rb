@@ -74,8 +74,16 @@ RSpec.describe F1SalesCustom::Hooks::Lead do
       context 'when customer choose the Loja Pinheiros' do
         before { product.name = 'Loja Pinheiros - Móveis Planejados até 50%off * 26.06.2023' }
 
-        it 'returns source - São Caetano unit' do
+        it 'returns source - Pinheiros' do
           expect(switch_source).to eq('Facebook - Espaço Vip Ambientes Planejados - Pinheiros')
+        end
+      end
+
+      context 'when customer choose the Loja São Caetano' do
+        before { product.name = 'Loja São Caetano - Cozinha planejada 36x e 90 dias *07.07.23' }
+
+        it 'returns source - Pinheiros' do
+          expect(switch_source).to eq('Facebook - Espaço Vip Ambientes Planejados - São Caetano')
         end
       end
     end
