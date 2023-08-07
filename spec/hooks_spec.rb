@@ -86,6 +86,14 @@ RSpec.describe F1SalesCustom::Hooks::Lead do
           expect(switch_source).to eq('Facebook - Espaço Vip Ambientes Planejados - São Caetano')
         end
       end
+
+      context 'when customer choose the Loja Santana' do
+        before { product.name = 'Loja Santana - Cozinha a partir 9.999 + lavanderia' }
+
+        it 'returns source - Pinheiros' do
+          expect(switch_source).to eq('Facebook - Espaço Vip Ambientes Planejados - Santana')
+        end
+      end
     end
   end
 end
