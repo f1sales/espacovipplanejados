@@ -46,7 +46,7 @@ module Espacovipplanejados
       end
 
       def santana?
-        message['santana']
+        message['santana'] || product['santana']
       end
     end
   end
